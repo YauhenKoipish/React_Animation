@@ -1,0 +1,15 @@
+.home {
+  position: absolute;
+  z-index: 0;
+  height: 100%;
+  width: 100%;
+  transition: opacity 1s;
+  opacity: 0;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: red;
+  font-size: 60px;
+  font-weight: 900;
+}

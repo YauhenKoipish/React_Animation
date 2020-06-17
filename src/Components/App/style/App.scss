@@ -1,0 +1,61 @@
+.desktop {
+  min-height: 100vh;
+  background-color: aqua;
+  background-size: cover;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  position: relative;
+
+  .background {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    z-index: 0;
+
+    .background__black {
+      position: absolute;
+      z-index: 2;
+      right: 0;
+      height: 100%;
+      width: 54%;
+      background-image: url("./bgBlack.png");
+      background-repeat: repeat-x;
+      background-size: cover;
+      transition-property: width;
+      transition-duration: 1s;
+    }
+
+    .background__black-wide {
+      width: 59%;
+    }
+
+    .background__green {
+      position: absolute;
+      z-index: 1;
+      right: 0;
+      height: 100%;
+      width: 71.8%;
+      background-image: url("./bgGreen.png");
+      background-repeat: repeat-x;
+      background-size: cover;
+      transition-property: right, width;
+      transition-duration: 1s;
+    }
+
+    .background__green-wide {
+      right: 5%;
+    }
+
+    .background__green-hidden {
+      width: 43%;
+    }
+  }
+
+  .page-active {
+    display: flex;
+    opacity: 1;
+    z-index: 2;
+  }
+}

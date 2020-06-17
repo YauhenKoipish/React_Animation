@@ -1,0 +1,26 @@
+.header {
+  margin-top: 30px;
+  width: 85%;
+  font-size: 18px;
+  display: flex;
+  position: relative;
+  z-index: 5;
+  align-items: center;
+
+  .header__navigations {
+    list-style: none;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+
+    .header__navigations-list {
+      color: black;
+      cursor: pointer;
+      margin-right: 30px;
+    }
+
+    .header__navigations-active {
+      color: red;
+    }
+  }
+}
