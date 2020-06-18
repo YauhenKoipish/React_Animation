@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React from "react";
 
 // export default function Matches({ pageActive }) {
 //   let matchesClassName, matchesBgClassName;
@@ -62,11 +62,11 @@ import React, { Component } from "react";
 //     return <>{this.updatePage()}</>;
 //   }
 
-export default function Matches() {
+export default function Matches({ pageActiveClass }) {
   return (
-    <div className="matches">
-      <div className="matches__bg"></div>
-      <div className="matches__table"></div>
+    <div className={`matches ${pageActiveClass.matches}`}>
+      <div className={`matches__bg ${pageActiveClass.matches__bg}`}></div>
+      <div className={`matches__table ${pageActiveClass.matches__table}`}></div>
     </div>
   );
 }

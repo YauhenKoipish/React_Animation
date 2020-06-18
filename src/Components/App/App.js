@@ -10,6 +10,13 @@ export default class App extends Component {
     super(props);
     this.state = {
       pageActive: "home",
+      homePageActiveClass: { home: "" },
+      matchesPageActiveClass: {
+        matches: "",
+        matches__bg: "",
+        matches__table: "",
+      },
+      rulesPageActiveClass: { rules: "" },
     };
 
     this.homePage = document.querySelector(".home");
@@ -17,48 +24,117 @@ export default class App extends Component {
 
   setPage = (pageName) => {
     this.setState({ pageActive: pageName });
-    let homePage = document.querySelector(".home");
 
-    let matchesPage = document.querySelector(".matches");
-    let matchesBg = document.querySelector(".matches__bg");
-    let matchesTable = document.querySelector(".matches__table");
+    // let homePage = document.querySelector(".home");
+    // let matchesPage = document.querySelector(".matches");
+    // let matchesBg = document.querySelector(".matches__bg");
+    // let matchesTable = document.querySelector(".matches__table");
+    // let rulesPage = document.querySelector(".rules");
 
-    let rulesPage = document.querySelector(".rules");
+    // if (pageName === "home") {
+    //   setTimeout(() => {
+    //     homePage.classList.add("page-active");
+    //   }, 1000);
+    // } else {
+    //   homePage.classList.remove("page-active");
+    // }
 
     if (pageName === "home") {
       setTimeout(() => {
-        homePage.classList.add("page-active");
+        this.setState({
+          homePageActiveClass: { home: "page-active" },
+        });
       }, 1000);
     } else {
-      homePage.classList.remove("page-active");
+      this.setState({
+        homePageActiveClass: { home: "" },
+      });
     }
+    if (pageName === "home") {
+      setTimeout(() => {
+        this.setState({
+          homePageActiveClass: { home: "page-active" },
+        });
+      }, 1000);
+    } else {
+      this.setState({
+        homePageActiveClass: { home: "" },
+      });
+    }
+
+    // if (pageName === "matches") {
+    //   setTimeout(() => {
+    //     matchesPage.classList.add("page-active");
+    //     matchesBg.classList.add("matches__bg-active");
+
+    //     setTimeout(() => {
+    //       matchesTable.classList.add("matches__table-active");
+    //     }, 1000);
+    //   }, 1000);
+    // } else {
+    //   matchesPage.classList.remove("page-active");
+    //   matchesBg.classList.remove("matches__bg-active");
+    //   matchesTable.classList.remove("matches__table-active");
+    // }
 
     if (pageName === "matches") {
       setTimeout(() => {
-        matchesPage.classList.add("page-active");
-        matchesBg.classList.add("matches__bg-active");
+        this.setState({
+          matchesPageActiveClass: {
+            matches: "page-active",
+            matches__bg: "matches__bg-active",
+            matches__table: this.state.matchesPageActiveClass.matchesTable,
+          },
+        });
 
         setTimeout(() => {
-          matchesTable.classList.add("matches__table-active");
+          this.setState({
+            matchesPageActiveClass: {
+              matches: this.state.matchesPageActiveClass.matches,
+              matches__bg: this.state.matchesPageActiveClass.matches__bg,
+              matches__table: "matches__table-active",
+            },
+          });
         }, 1000);
       }, 1000);
     } else {
-      matchesPage.classList.remove("page-active");
-      matchesBg.classList.remove("matches__bg-active");
-      matchesTable.classList.remove("matches__table-active");
+      this.setState({
+        matchesPageActiveClass: {
+          matches: "",
+          matches__bg: "",
+          matches__table: "",
+        },
+      });
     }
+
+    // if (pageName === "rules") {
+    //   setTimeout(() => {
+    //     rulesPage.classList.add("page-active");
+    //   }, 1000);
+    // } else {
+    //   rulesPage.classList.remove("page-active");
+    // }
 
     if (pageName === "rules") {
       setTimeout(() => {
-        rulesPage.classList.add("page-active");
+        this.setState({ rulesPageActiveClass: { rules: "page-active" } });
       }, 1000);
     } else {
-      rulesPage.classList.remove("page-active");
+      this.setState({ rulesPageActiveClass: { rules: "" } });
     }
   };
 
+  componentDidMount() {
+    this.setPage(this.state.pageActive);
+  }
+
   render() {
-    const { pageActive } = this.state;
+    const {
+      pageActive,
+      homePageActiveClass,
+      rulesPageActiveClass,
+      matchesPageActiveClass,
+    } = this.state;
 
     return (
       <div className="desktop">
@@ -83,9 +159,9 @@ export default class App extends Component {
             ""
           )}
         </div>
-        <Home pageActive={pageActive} />
-        <Matches pageActive={pageActive} />
-        <Rules pageActive={pageActive} />
+        <Home pageActiveClass={homePageActiveClass} />
+        <Matches pageActiveClass={matchesPageActiveClass} />
+        <Rules pageActiveClass={rulesPageActiveClass} />
         <Mouse />
       </div>
     );

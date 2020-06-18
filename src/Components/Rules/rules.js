@@ -1,5 +1,7 @@
 import React from "react";
 
-export default function Rules() {
-  return <div className="rules"> Kim bolshoy dyadka</div>;
+export default function Rules({ pageActiveClass }) {
+  return (
+    <div className={`rules ${pageActiveClass.rules}`}> Kim bolshoy dyadka</div>
+  );
 }
